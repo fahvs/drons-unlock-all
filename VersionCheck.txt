@@ -1,0 +1,11 @@
+            if (CurrentVersion != Version)
+            {
+                string date = DateTime.UtcNow.ToString("MM-dd-yy");
+                MessageBox.Show("Downloading Update...", "Unlock Tool", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                WebClient webClient2 = new WebClient();
+                File.Move("Dron's Unlocker.exe", $"Dron's Unlocker {date}.bak");
+                webClient2.DownloadFile("http://fahv.net/Dron's%20Unlocker.exe", "Update.exe");
+                File.Move("Update.exe", "Dron's Unlocker.exe");
+                Process.Start("Dron's Unlocker.exe");
+                Process.GetCurrentProcess().Kill();
+            }
